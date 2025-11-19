@@ -36,7 +36,10 @@ const registerUser = async (req, res) => {
       name: name.trim(),
       email: normalizedEmail,
       password: hashedPassword,
-      role: role || 2, // default Applicant
+
+      // 🔹 UPDATED → role as STRING
+      role: role || "applicant",
+
       gender: gender || null,
     });
 
@@ -144,7 +147,7 @@ const updateUser = async (req, res) => {
 };
 
 // -------------------------------------------------------------
-// 📌 DELETE USER (SOFT DELETE)
+// 📌 DELETE USER (HARD DELETE NOW)
 // -------------------------------------------------------------
 const deleteUser = async (req, res) => {
   try {
@@ -156,12 +159,10 @@ const deleteUser = async (req, res) => {
 
     if (!user) return ReE(res, "User not found", 404);
 
-    await user.update({
-      isDeleted: true,
-      isActive: false,
-    });
+    // 🔥 HARD DELETE
+    await user.destroy();
 
-    return ReS(res, { success: true, message: "User deleted successfully" }, 200);
+    return ReS(res, { success: true, message: "User deleted permanently" }, 200);
   } catch (error) {
     console.error("Delete User Error:", error);
     return ReE(res, error.message, 500);

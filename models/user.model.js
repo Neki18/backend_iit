@@ -10,12 +10,12 @@ module.exports = (sequelize, Sequelize) => {
       email: { type: Sequelize.STRING, allowNull: false, unique: true },
       password: { type: Sequelize.STRING, allowNull: false },
 
-      // 🔹 Role Management
-      // 1 = Admin, 2 = Applicant, 3 = Job Provider
-      role: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 2 },
+      // 🔹 Role as STRING now
+      // Examples: "admin", "applicant", "job_provider"
+      role: { type: Sequelize.STRING, allowNull: false, defaultValue: "applicant" },
 
       // 🔹 Gender
-      gender: { type: Sequelize.BIGINT, allowNull: true },
+      gender: { type: Sequelize.STRING, allowNull: true },
 
       // 🔹 System Fields
       isActive: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: true },
@@ -31,10 +31,7 @@ module.exports = (sequelize, Sequelize) => {
     }
   );
 
-  // ✅ Associations
-  User.associate = (models) => {
-    // Add associations if needed later
-  };
+  User.associate = (models) => {};
 
   return User;
 };
