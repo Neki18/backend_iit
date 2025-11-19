@@ -6,15 +6,15 @@ let CONFIG = {};
 
 // General
 CONFIG.app = process.env.APP || "trusted-discovery-dev";
-CONFIG.port = process.env.PORT || 3001;
+CONFIG.port = process.env.PORT || 3000;
 
 // Database
 CONFIG.db_dialect   = process.env.DB_DIALECT || "postgres";
 CONFIG.db_host      = process.env.DB_HOST || "localhost";
-CONFIG.db_port      = process.env.DB_PORT || 3001;
-CONFIG.db_name      = process.env.DB_NAME || "job";
+CONFIG.db_port      = process.env.DB_PORT || 5433;
+CONFIG.db_name      = process.env.DB_NAME || "hackathon";
 CONFIG.db_user      = process.env.DB_USER || "postgres";
-CONFIG.db_password  = process.env.DB_PASSWORD || "pass1122me";
+CONFIG.db_password  = process.env.DB_PASSWORD || "7568676897";
 CONFIG.db_usePassword = (process.env.DB_USE_PASSWORD || "true") === "true";
 
 module.exports = CONFIG;  // <-- export it
