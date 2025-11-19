@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config(); // Load .env only in non-production
+  require("dotenv").config(); // Load .env only in development
 }
 
 let CONFIG = {};
@@ -17,4 +17,8 @@ CONFIG.db_user      = process.env.DB_USER || "postgres";
 CONFIG.db_password  = process.env.DB_PASSWORD || "7568676897";
 CONFIG.db_usePassword = (process.env.DB_USE_PASSWORD || "true") === "true";
 
-module.exports = CONFIG;  // <-- export it
+// JWT
+CONFIG.jwt_encryption = process.env.JWT_SECRET || "defaultSecretKey";
+CONFIG.jwt_expiration = process.env.JWT_EXPIRES_IN || "24h";
+
+module.exports = CONFIG;
